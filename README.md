@@ -50,6 +50,7 @@ Set-ExecutionPolicy Unrestricted -Scope Process -Force
 # Lancer le script
 .\deploy_vmware.ps1
 ```
+4. Si vous avez VMware déja executé, relancez le.
 
 **Note :** Le premier lancement peut être long car il inclut le téléchargement de l'archive ZIP. Les exécutions suivantes détecteront les fichiers locaux et passeront directement au déploiement si nécessaire.
 
@@ -67,4 +68,5 @@ ________________________________________________________________________________
 
 
 # L'équipe CUSTODES
+
 
