@@ -35,6 +35,7 @@ Le script s'assure de la présence et du déploiement des machines suivantes :
 * **VMware Workstation Pro** installé.
 * **PowerShell 5.1** ou supérieur.
 * Espace disque suffisant pour télécharger et extraire les VMs.
+* Mettre les vms sur un vmnet en host-only sur le réseau 192.168.1.0/24
 
 ## 🚀 Utilisation
 
@@ -66,3 +67,4 @@ ________________________________________________________________________________
 
 
 # L'équipe CUSTODES
+
