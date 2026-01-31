@@ -60,6 +60,9 @@ Set-ExecutionPolicy Unrestricted -Scope Process -Force
 
 * Doublons : Si une VM existe déjà dans le dossier de destination, le script affichera [SKIP] et ne l'écrasera pas. Supprimez le dossier de la VM sur le disque si vous souhaitez forcer un redéploiement.
 
+* Certaines versions de vmware peuvent provoquer des erreurs de type écran bleu, plusieurs redémarrages peuvent être nécessaires.
+
 __________________________________________________________________________________________________________________________________________
+
 
 # L'équipe CUSTODES
