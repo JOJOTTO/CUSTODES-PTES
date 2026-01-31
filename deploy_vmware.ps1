@@ -178,31 +178,33 @@ vmlist.$uuid = "$VMXPath"
 
 function Get-VmsOvas {
     param (
-        [string]$url = "https://fyc2026.duckdns.org/vms_ovas.zip",
-        [string]$destinationPath = "$PSScriptRoot\vms_ovas.zip"
+        [string]$url = "https://fyc2026.duckdns.org/vms_ovfs.zip",
+        [string]$destinationPath = "$PSScriptRoot\vms_ovfs.zip"
     )
 
     # Télécharger le fichier zip
+    $ProgressPreference = 'SilentlyContinue'
     $res = Invoke-WebRequest -Uri $url -OutFile $destinationPath
-    if ($res.StatusCode -ne 200) {
-        throw "Erreur lors du téléchargement du fichier: $($res.StatusCode)"
-    }
+    # if ($res.StatusCode -ne 200) {
+    #     throw "Erreur lors du téléchargement du fichier: $($res.StatusCode)"
+    # }
 
     return $res
 }
 
 function Extract-VmsOvas {
     param (
-        [string]$zipPath = "$PSScriptRoot\vms_ovas.zip",
+        [string]$zipPath = "$PSScriptRoot\vms_ovfs.zip",
         [string]$extractPath = "$PSScriptRoot"
     )
 
-    # Créer le répertoire de destination s'il n'existe pas
-    if (-not (Test-Path -Path $extractPath)) {
-        New-Item -ItemType Directory -Path $extractPath | Out-Null
-    }
+    # # Créer le répertoire de destination s'il n'existe pas
+    # if (-not (Test-Path -Path $extractPath)) {
+    #     New-Item -ItemType Directory -Path $extractPath | Out-Null
+    # }
 
     # Extraire le fichier zip
+    $ProgressPreference = 'SilentlyContinue'
     Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
 
     return $extractPath
@@ -260,7 +262,7 @@ function Ensure-VmsOvas {
         }
         
         Write-Host "Extraction des fichiers OVF..." -ForegroundColor Yellow
-        Extract-VmsOvas -extractPath $vmsOvfsPath
+        Extract-VmsOvas
 
         return $True
     } catch {
@@ -268,6 +270,8 @@ function Ensure-VmsOvas {
         return $False
     }
 }  
+
+$ProgressPreference = 'SilentlyContinue'
 
 Write-Host "=== Vérification des fichiers OVF des labs ===" -ForegroundColor Cyan
 $success = Ensure-VmsOvas
